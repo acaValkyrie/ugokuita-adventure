@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1747766866
+camera_3d.gd::GDScript::3633686870467975163::1747765902::0::1::::<>Camera3D<><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1747766076::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::679717457298526214::1747764721::1747764829::1::::<><><>0<>0<>817cd787323bd81efb9373317a1fbad6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+ita.tscn::PackedScene/PackedScene::8097366352411185376::1747764721::0::1::::<><><>0<>0<><>::uid://bxsc8t7q13ngi::::res://Main Frame III v40.fbx
+Main Frame III v40.fbx::PackedScene/PackedScene::4038104300265537672::1747764721::1747764841::1::::<><><>0<>0<>a2582c77d43c939d60a141b35d2a9a09<>res://.godot/imported/Main Frame III v40.fbx-064a0a1ecf25a108692ba207d13dd463.scn::
+node_3d.tscn::PackedScene::238193767936900836::1747765905::0::1::::<><><>0<>0<><>::uid://dnmoo8st1hpky::::res://ita.tscn<>uid://brh540yrw6406::::res://ugokuita.gd<>uid://br1gj6nueq2xb::::res://camera_3d.gd
+ugokuita.gd::GDScript::3595956318586419933::1747765846::0::1::::<>CharacterBody3D<><>0<>0<><>::
+::res://web/::1747766195

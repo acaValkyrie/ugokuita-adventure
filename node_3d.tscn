@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=11 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="PackedScene" uid="uid://dnmoo8st1hpky" path="res://ita.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
+[ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
 size = Vector3(0.512573, 0.250977, 0.737305)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a0tk4"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 9.8, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_r3fl7"]
+size = Vector2(0.02, 0.905)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
 size = Vector3(10, 1, 10)
@@ -24,15 +42,22 @@ transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.7422
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.120605, 0.00146484)
 shape = SubResource("BoxShape3D_noarx")
 
+[node name="WindTrail" type="GPUParticles3D" parent="CharacterBody3D"]
+material_override = SubResource("StandardMaterial3D_a0tk4")
+cast_shadow = 0
+emitting = false
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_a0tk4")
+draw_pass_1 = SubResource("QuadMesh_r3fl7")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.876244, 0)
 mesh = SubResource("BoxMesh_a0tk4")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.876244, 0)
 shape = SubResource("BoxShape3D_r3fl7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -40,4 +65,36 @@ transform = Transform3D(1, 0, 0, 0, 0.014922, 0.999889, 0, -0.999889, 0.014922, 
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.705748, 0.708463, 0, -0.708463, 0.705748, 0, 1.50427, 2.97109)
+transform = Transform3D(1, 0, 0, 0, 0.705748, 0.708463, 0, -0.708463, 0.705748, 0, 1.50427, 4.97702)
+script = ExtResource("3_a0tk4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_r3fl7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 31.0
+offset_top = -13.0
+offset_right = 246.0
+offset_bottom = 249.0
+grow_vertical = 2
+scale = Vector2(2.515, 2.515)
+text = "Thank you for Playing!
+
+Staff
+
+Yae
+Void
+Kienn
+Yoshiko
+Valkyrie
+
+and You..."

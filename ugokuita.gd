@@ -5,6 +5,10 @@ extends CharacterBody3D
 @export var jump_velocity := 4.0
 @export var gravity := 20.0
 
+var fall_timer := 0.0
+var fall_sway_speed := 8.0
+var fall_sway_amount := 0.1
+
 func _physics_process(delta: float) -> void:
 	var input_dir = get_input_direction()
 	var direction = input_dir.normalized()
@@ -21,7 +25,13 @@ func _physics_process(delta: float) -> void:
 
 	# 重力を加える
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		if global_transform.origin.y < -10:
+			$WindTrail.emitting = true
+			fall_timer += delta
+			var sway = sin(fall_timer * fall_sway_speed) * fall_sway_amount
+			rotation.z = sway
+		else:
+			velocity.y -= gravity * delta
 	else:
 		# ジャンプ
 		if Input.is_action_just_pressed("jump"):
