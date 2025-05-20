@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 			fall_timer += delta
 			var sway = sin(fall_timer * fall_sway_speed) * fall_sway_amount
 			rotation.z = sway
+			velocity.y = 0
 		else:
 			velocity.y -= gravity * delta
 	else:
