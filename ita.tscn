@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnmoo8st1hpky"]
+
+[ext_resource type="PackedScene" uid="uid://bxsc8t7q13ngi" path="res://Main Frame III v40.fbx" id="1_3gudr"]
+
+[node name="Node3D" instance=ExtResource("1_3gudr")]
+
+[node name="Body162" parent="Main Frame III v40/mid-360-asm v5_1/mid-360-asm v5" index="22"]
+visible = false
+
+[node name="HAKO v2_1" parent="Main Frame III v40" index="53"]
+visible = false
+
+[node name="Body140" parent="Main Frame III v40/HAKO v2_1/HAKO v2" index="0"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.39403e-08, 0.225217)
+visible = false
