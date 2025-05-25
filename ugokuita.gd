@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 	# 重力を加える
 	if not is_on_floor():
-		if global_transform.origin.y < -10:
+		if global_transform.origin.y < -50:
 			$WindTrail.emitting = true
 			fall_timer += delta
 			var sway = sin(fall_timer * fall_sway_speed) * fall_sway_amount
