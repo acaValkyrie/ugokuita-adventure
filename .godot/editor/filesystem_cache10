@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1748139901
+export_presets.cfg::TextFile::-1::1747739169::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D::679717457298526214::1747713430::1748139903::1::::<><><>0<>0<>817cd787323bd81efb9373317a1fbad6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+ita.tscn::PackedScene::8097366352411185376::1747735255::0::1::::<><><>0<>0<><>::uid://bxsc8t7q13ngi::::res://Main Frame III v40.fbx
+Main Frame III v40.fbx::PackedScene::4038104300265537672::1747733313::1748139919::1::::<><><>0<>0<>a2582c77d43c939d60a141b35d2a9a09<>res://.godot/imported/Main Frame III v40.fbx-064a0a1ecf25a108692ba207d13dd463.scn::
+node_3d.tscn::PackedScene::238193767936900836::1747738458::0::1::::<><><>0<>0<><>::uid://dnmoo8st1hpky::::res://ita.tscn<>uid://brh540yrw6406::::res://ugokuita.gd
+ugokuita.gd::GDScript::3595956318586419933::1747737778::0::1::::<>CharacterBody3D<><>0<>0<><>::
+::res://web/::1747739169
+index.apple-touch-icon.png::CompressedTexture2D::9139041720537461218::1747739169::1748139903::1::::<><><>0<>0<>21c0ce9da907d96a45696864c2a7b782<>res://.godot/imported/index.apple-touch-icon.png-939ec69c79bbf504b92ad8ceed469d51.ctex::
+index.icon.png::CompressedTexture2D::8161827462373798604::1747739169::1748139903::1::::<><><>0<>0<>345b5009ac2f28af01018f1a2b8d6180<>res://.godot/imported/index.icon.png-c615af856eabc03ca93d51f6a8f07b60.ctex::
+index.png::CompressedTexture2D::2504314291038532892::1747739169::1748139903::1::::<><><>0<>0<>5055fb3417c1caa1880d5a711844d907<>res://.godot/imported/index.png-80964ad67552d78b1e33f58ad16188ff.ctex::
