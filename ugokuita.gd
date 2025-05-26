@@ -9,16 +9,30 @@ var fall_timer := 0.0
 var fall_sway_speed := 8.0
 var fall_sway_amount := 0.1
 
+var camera
+
 var audioPlayer
 var isAudioPlaying = false
 
 func _ready():
+	camera = $Camera3D
 	audioPlayer = $AudioStreamPlayer3D
 
+func _process(_delta):
+	var look_sensitivity = 2.5
+	var right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+	var right_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+
+	var input = Vector2(right_x, right_y)
+	if input.length_squared() < 0.01: return
+
+	camera.rotation_degrees.y -= input.y * look_sensitivity
+	camera.rotation_degrees.x -= clamp(camera.rotation_degrees.x - right_y * look_sensitivity, -60, 60)
+
 func _physics_process(delta: float) -> void:
-	var input_dir = get_input_direction()
-	var direction = input_dir.normalized()
-	
+	var direction = get_input_direction()
+	direction = direction.rotated(Vector3.UP, camera.rotation.y)
+
 	# キャラクターを移動方向に向かせる（回転）
 	# Y軸だけを使った回転（地面に対して水平）
 	if direction.length_squared() > 0.01:
@@ -50,9 +64,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = jump_velocity
 
 	move_and_slide()
-	
 
-func get_input_direction() -> Vector3:
+func get_key_input_direction() -> Vector3:
 	var dir = Vector3.ZERO
 
 	if Input.is_action_pressed("move_forward"):
@@ -64,4 +77,22 @@ func get_input_direction() -> Vector3:
 	if Input.is_action_pressed("move_right"):
 		dir.x += 1
 
-	return dir
+	return dir.normalized()
+
+func get_gamepad_input_direction() -> Vector3:
+	var dir = Vector3.ZERO
+
+	dir.x = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+	dir.z = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	if dir.length_squared() < 0.1:
+		dir = Vector3.ZERO
+	
+	return dir.normalized()
+
+func get_input_direction() -> Vector3:
+	var key_dir = get_key_input_direction()
+	var gamepad_dir = get_gamepad_input_direction()
+
+	var dir = key_dir + gamepad_dir
+	
+	return dir.normalized()

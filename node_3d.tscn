@@ -36,6 +36,7 @@ size = Vector3(10, 0.1, 10)
 [node name="RootScene" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9233)
 script = ExtResource("1_noarx")
 
 [node name="MainFrame - Reverse Prototype v10" parent="CharacterBody3D" instance=ExtResource("3_i5arm")]
