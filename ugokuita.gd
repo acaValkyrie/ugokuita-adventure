@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # 移動速度やジャンプ力などのパラメータ
 @export var move_speed := 5.0
-@export var jump_velocity := 4.0
+@export var jump_velocity := 10.0
 @export var gravity := 20.0
 
 var fall_timer := 0.0
@@ -15,19 +15,8 @@ var audioPlayer
 var isAudioPlaying = false
 
 func _ready():
-	camera = $Camera3D
+	camera = get_parent().get_node("Camera3D")
 	audioPlayer = $AudioStreamPlayer3D
-
-func _process(_delta):
-	var look_sensitivity = 2.5
-	var right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
-	var right_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
-
-	var input = Vector2(right_x, right_y)
-	if input.length_squared() < 0.01: return
-
-	camera.rotation_degrees.y -= input.y * look_sensitivity
-	camera.rotation_degrees.x -= clamp(camera.rotation_degrees.x - right_y * look_sensitivity, -60, 60)
 
 func _physics_process(delta: float) -> void:
 	var direction = get_input_direction()

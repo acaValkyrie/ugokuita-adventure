@@ -35,6 +35,12 @@ size = Vector3(10, 0.1, 10)
 
 [node name="RootScene" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.705872, 0.70834, 0, -0.70834, 0.705872, 0, 1.50427, 20.9003)
+script = ExtResource("3_a0tk4")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9233)
 script = ExtResource("1_noarx")
@@ -44,7 +50,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175311, -0.0123048, 0.2301
 visible = false
 
 [node name="MainFrame - URDF_FRAME v2" parent="CharacterBody3D" instance=ExtResource("4_wc5p8")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.367894)
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, -0.340059)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/MainFrame - URDF_FRAME v2"]
+transform = Transform3D(1, 1.67037e-22, 7.10543e-15, -7.10543e-15, 4.37114e-08, 1, -4.23516e-22, -1, 4.37114e-08, 0, 0, 0.158651)
+light_energy = 0.3
+light_indirect_energy = 0.3
+light_volumetric_fog_energy = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.125488, 0.0112306)
@@ -62,12 +74,6 @@ draw_pass_1 = SubResource("QuadMesh_r3fl7")
 stream = ExtResource("3_jka67")
 volume_db = 10.0
 autoplay = true
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.705748, 0.708463, 0, -0.708463, 0.705748, 0, 1.50427, 4.97702)
-script = ExtResource("3_a0tk4")
-
-[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D/Camera3D"]
 
 [node name="Ugokuita-Neo" parent="." instance=ExtResource("5_wc5p8")]
 transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, 0, -50.6852, -17.0267)
