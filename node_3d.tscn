@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=14 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="PackedScene" uid="uid://dnmoo8st1hpky" path="res://ita.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
-[ext_resource type="AudioStream" uid="uid://c2esrnq2jljrr" path="res://audio/running.wav" id="3_jka67"]
 [ext_resource type="PackedScene" uid="uid://bdu3ekg4chtx3" path="res://MainFrame - Reverse Prototype v10.fbx" id="3_i5arm"]
+[ext_resource type="AudioStream" uid="uid://c2esrnq2jljrr" path="res://audio/running.wav" id="3_jka67"]
 [ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 
