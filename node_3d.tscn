@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=14 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="PackedScene" uid="uid://dnmoo8st1hpky" path="res://ita.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://bdu3ekg4chtx3" path="res://MainFrame - Reverse Prototype v10.fbx" id="3_i5arm"]
+[ext_resource type="AudioStream" uid="uid://c2esrnq2jljrr" path="res://audio/running.wav" id="3_jka67"]
 [ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 
@@ -56,6 +57,11 @@ lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_a0tk4")
 draw_pass_1 = SubResource("QuadMesh_r3fl7")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
+stream = ExtResource("3_jka67")
+volume_db = 10.0
+autoplay = true
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
@@ -79,6 +85,8 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.705748, 0.708463, 0, -0.708463, 0.705748, 0, 1.50427, 4.97702)
 script = ExtResource("3_a0tk4")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

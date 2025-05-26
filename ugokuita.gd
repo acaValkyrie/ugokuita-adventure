@@ -9,6 +9,12 @@ var fall_timer := 0.0
 var fall_sway_speed := 8.0
 var fall_sway_amount := 0.1
 
+var audioPlayer
+var isAudioPlaying = false
+
+func _ready():
+	audioPlayer = $AudioStreamPlayer3D
+
 func _physics_process(delta: float) -> void:
 	var input_dir = get_input_direction()
 	var direction = input_dir.normalized()
@@ -18,6 +24,11 @@ func _physics_process(delta: float) -> void:
 	if direction.length_squared() > 0.01:
 		var target_rotation = atan2(-direction.x, -direction.z)
 		rotation.y = target_rotation
+		if not audioPlayer.playing:
+			audioPlayer.playing = true
+	else:
+		if audioPlayer.playing:
+			audioPlayer.playing = false
 	
 	# 水平方向の移動
 	velocity.x = direction.x * move_speed
