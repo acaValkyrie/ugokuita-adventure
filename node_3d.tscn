@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=13 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="PackedScene" uid="uid://dnmoo8st1hpky" path="res://ita.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
 [ext_resource type="AudioStream" uid="uid://c2esrnq2jljrr" path="res://audio/running.wav" id="3_jka67"]
+[ext_resource type="PackedScene" uid="uid://bdu3ekg4chtx3" path="res://MainFrame - Reverse Prototype v10.fbx" id="3_i5arm"]
 [ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
-size = Vector3(0.512573, 0.250977, 0.737305)
+size = Vector3(0.512573, 0.260742, 0.717774)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 billboard_mode = 3
@@ -29,18 +31,22 @@ size = Vector2(0.02, 0.905)
 size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
-size = Vector3(10, 1, 10)
+size = Vector3(11.3303, 2.9855, 9.66883)
 
 [node name="RootScene" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_noarx")
 
-[node name="Ugokuita" parent="CharacterBody3D" instance=ExtResource("1_a202f")]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+[node name="MainFrame - Reverse Prototype v10" parent="CharacterBody3D" instance=ExtResource("3_i5arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175311, -0.0123048, 0.230155)
+visible = false
+
+[node name="MainFrame - URDF_FRAME v2" parent="CharacterBody3D" instance=ExtResource("4_wc5p8")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.367894)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.120605, 0.00146484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.125488, 0.0112306)
 shape = SubResource("BoxShape3D_noarx")
 
 [node name="WindTrail" type="GPUParticles3D" parent="CharacterBody3D"]
@@ -60,11 +66,17 @@ autoplay = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
 mesh = SubResource("BoxMesh_a0tk4")
 skeleton = NodePath("../CollisionShape3D")
 
+[node name="Ugokuita" parent="StaticBody3D" instance=ExtResource("1_a202f")]
+transform = Transform3D(-100, 1.50996e-05, 6.60024e-13, 0, -4.37114e-06, 100, 1.50996e-05, 100, 4.37114e-06, 0, -25.371, 17.1479)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0635986, -2.80187, -0.81762)
 shape = SubResource("BoxShape3D_r3fl7")
+debug_color = Color(0.950811, 0.0165012, 0.561114, 0.898039)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.014922, 0.999889, 0, -0.999889, 0.014922, 0, 3.16283, 0)

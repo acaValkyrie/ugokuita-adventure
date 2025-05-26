@@ -11,6 +11,6 @@ func _process(_delta):
 
 	look_at(character.global_transform.origin, Vector3.UP)
 
-	if character.global_transform.origin.y < -0.1:
+	if character.global_transform.origin.y < -49:
 		# カメラの位置をキャラクターの位置に合わせる
 		global_transform.origin = character.global_transform.origin + Vector3(0, 0.75, -1.5)
