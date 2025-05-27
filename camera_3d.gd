@@ -6,7 +6,7 @@ var theta_width: float = 0.0
 var theta_height_max: float = PI*2/5
 var theta_height_min: float = PI/8
 var theta_height: float = theta_height_min
-var distance: float = 1.0
+var distance: float = 3.0
 
 func _ready():
     # ルートノードからCharacterBody3Dを探す
@@ -22,7 +22,10 @@ func _process(_delta):
     var right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
     var right_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
     
-    var input = Vector2(right_x, right_y)
+    var input_gamepad = Vector2(right_x, right_y)
+    
+    # キーボードの十字キー入力を取得
+    var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") + input_gamepad
     
     if input.length_squared() > 0.01:
         theta_height += input.y * look_sensitivity_height
