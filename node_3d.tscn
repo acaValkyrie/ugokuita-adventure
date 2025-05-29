@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bunvl4inwjni1" path="res://ugokuita_neo.tscn" id="5_wc5p8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
-size = Vector3(0.512573, 0.260742, 0.717774)
+size = Vector3(0.512573, 0.238281, 0.717774)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 billboard_mode = 3
@@ -42,7 +42,7 @@ script = ExtResource("3_a0tk4")
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.40981, 16.6773)
 script = ExtResource("1_noarx")
 
 [node name="MainFrame - Reverse Prototype v10" parent="CharacterBody3D" instance=ExtResource("3_i5arm")]
@@ -53,13 +53,14 @@ visible = false
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, -0.340059)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/MainFrame - URDF_FRAME v2"]
-transform = Transform3D(1, 1.67037e-22, 7.10543e-15, -7.10543e-15, 4.37114e-08, 1, -4.23516e-22, -1, 4.37114e-08, 0, 0, 0.158651)
-light_energy = 0.3
-light_indirect_energy = 0.3
-light_volumetric_fog_energy = 0.0
+transform = Transform3D(1, 2.42817e-21, 7.10543e-15, -7.10543e-15, 4.37114e-08, 1, 0, -1, 4.37114e-08, 1.68097e-09, 0.019228, 0.158651)
+light_color = Color(1, 0.972549, 0.882353, 1)
+light_bake_mode = 1
+spot_range = 100.0
+spot_angle = 72.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.125488, 0.0112306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.136719, 0.0112305)
 shape = SubResource("BoxShape3D_noarx")
 
 [node name="WindTrail" type="GPUParticles3D" parent="CharacterBody3D"]
