@@ -13,12 +13,23 @@ var camera
 
 var audioPlayer
 var isAudioPlaying = false
+var spotLight
+var isPressed = false
 
 func _ready():
 	camera = get_parent().get_node("Camera3D")
 	audioPlayer = $AudioStreamPlayer3D
+	spotLight = $SpotLight3D
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("toggle_head_light"):
+		if isPressed == false:
+			isPressed = true
+			var currentVisible = spotLight.visible
+			spotLight.visible = not currentVisible
+	else:
+		isPressed = false
+		
 	var direction = get_input_direction()
 	direction = direction.rotated(Vector3.UP, camera.rotation.y)
 
