@@ -43,7 +43,7 @@ func _process(_delta):
 	global_transform.origin = character.global_transform.origin + camera_relative_position
 	
 
-	if character.global_transform.origin.y < -49:
+	if character.global_transform.origin.y < character.fall_stop_height:
 		# カメラの位置をキャラクターの位置に合わせる
 		global_transform.origin = character.global_transform.origin + Vector3(0, 0.75, -1.5)
 
