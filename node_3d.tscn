@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=15 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://bunvl4inwjni1" path="res://ugokuita_neo.tscn" id="5_wc5p8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
-size = Vector3(0.512573, 0.238281, 0.717774)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc5p8"]
+margin = 0.0
+radius = 0.15
+height = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 billboard_mode = 3
@@ -26,12 +28,6 @@ gravity = Vector3(0, 9.8, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_r3fl7"]
 size = Vector2(0.02, 0.905)
-
-[sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
-size = Vector3(10, 0.1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
-size = Vector3(10, 0.1, 10)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wc5p8"]
 
@@ -63,8 +59,8 @@ visible = false
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, -0.340059)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152588, 0.136719, 0.0112305)
-shape = SubResource("BoxShape3D_noarx")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.203399, 0.0504808, -0.27322)
+shape = SubResource("CapsuleShape3D_wc5p8")
 
 [node name="WindTrail" type="GPUParticles3D" parent="CharacterBody3D"]
 material_override = SubResource("StandardMaterial3D_a0tk4")
@@ -89,18 +85,6 @@ spot_angle = 72.5
 
 [node name="Ugokuita-Neo" parent="." instance=ExtResource("5_wc5p8")]
 transform = Transform3D(200, 0, 0, 0, -8.74228e-06, 200, 0, -200, -8.74228e-06, 0, -50.6852, -17.0267)
-
-[node name="StaticBody3D - stage" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4766, -0.5, 0)
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D - stage"]
-mesh = SubResource("BoxMesh_a0tk4")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D - stage"]
-shape = SubResource("BoxShape3D_r3fl7")
-debug_color = Color(0.950811, 0.0165012, 0.561114, 0.898039)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.014922, 0.999889, 0, -0.999889, 0.014922, 0, 43.1628, 0)
