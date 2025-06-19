@@ -7,26 +7,30 @@ var theta_height_max: float = PI*2/5
 var theta_height_min: float = PI/8
 var theta_height: float = theta_height_min
 var distance: float = 3.0
+var virtual_joystick_R
 
 func _ready():
     # ルートノードからCharacterBody3Dを探す
     character = get_parent().get_node("CharacterBody3D")
+    virtual_joystick_R = get_parent().get_node("CanvasLayer/JoyStick_R")
 
 func _physics_process(_delta):
     if not character: return
 
     look_at(character.global_transform.origin, Vector3.UP)
     
-    var look_sensitivity_width = 0.1
-    var look_sensitivity_height = 0.05
-    var right_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
-    var right_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+    var gamepad_x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+    var gamepad_y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
     
-    var input_gamepad = Vector2(right_x, right_y)
+    var input_gamepad = Vector2(gamepad_x, gamepad_y)
+    
+    var input_virtual = virtual_joystick_R.get_input_vector()
     
     # キーボードの十字キー入力を取得
-    var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") + input_gamepad
+    var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") + input_gamepad + input_virtual
     
+    var look_sensitivity_width = 0.1
+    var look_sensitivity_height = 0.05
     if input.length_squared() > 0.01:
         theta_height += input.y * look_sensitivity_height
         if theta_height > theta_height_max:

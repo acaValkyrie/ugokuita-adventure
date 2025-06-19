@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=20 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://bunvl4inwjni1" path="res://ugokuita_neo.tscn" id="5_wc5p8"]
+[ext_resource type="Script" uid="uid://ddsx4je3iohxa" path="res://joy_stick.gd" id="8_jsk3o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc5p8"]
 margin = 0.0
@@ -38,6 +39,22 @@ process_mode = 3
 [sub_resource type="Environment" id="Environment_4arys"]
 background_mode = 2
 sky = SubResource("Sky_jsk3o")
+
+[sub_resource type="Curve" id="Curve_wc5p8"]
+_data = [Vector2(0.3, 0.359551), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsk3o"]
+width = 64
+curve = SubResource("Curve_wc5p8")
+
+[sub_resource type="Curve" id="Curve_4arys"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_6iypd"]
+width = 32
+curve = SubResource("Curve_4arys")
 
 [node name="RootScene" type="Node3D"]
 
@@ -123,3 +140,61 @@ and You..."
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4arys")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="JoyStick_L" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_jsk3o")
+
+[node name="Base" type="TextureRect" parent="CanvasLayer/JoyStick_L"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = 482.0
+offset_right = 137.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_jsk3o")
+
+[node name="Knob" type="TextureRect" parent="CanvasLayer/JoyStick_L"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 518.0
+offset_right = 141.0
+offset_bottom = 558.0
+texture = SubResource("CurveTexture_6iypd")
+
+[node name="JoyStick_R" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_jsk3o")
+
+[node name="Base" type="TextureRect" parent="CanvasLayer/JoyStick_R"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 979.0
+offset_top = 490.0
+offset_right = 1049.0
+offset_bottom = 559.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_jsk3o")
+
+[node name="Knob" type="TextureRect" parent="CanvasLayer/JoyStick_R"]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 526.0
+offset_right = 1053.0
+offset_bottom = 566.0
+texture = SubResource("CurveTexture_6iypd")
