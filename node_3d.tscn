@@ -1,18 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnnate1hnfbw"]
+[gd_scene load_steps=15 format=3 uid="uid://dnnate1hnfbw"]
 
 [ext_resource type="Script" uid="uid://brh540yrw6406" path="res://ugokuita.gd" id="1_noarx"]
 [ext_resource type="Script" uid="uid://br1gj6nueq2xb" path="res://camera_3d.gd" id="3_a0tk4"]
-[ext_resource type="PackedScene" uid="uid://bdu3ekg4chtx3" path="res://MainFrame - Reverse Prototype v10.fbx" id="3_i5arm"]
 [ext_resource type="AudioStream" uid="uid://c2esrnq2jljrr" path="res://audio/running.wav" id="3_jka67"]
 [ext_resource type="Script" uid="uid://dbuu6pemftg1h" path="res://control.gd" id="4_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://boyu78kac53m1" path="res://MainFrame - URDF_FRAME v2.fbx" id="4_wc5p8"]
 [ext_resource type="PackedScene" uid="uid://bunvl4inwjni1" path="res://ugokuita_neo.tscn" id="5_wc5p8"]
-[ext_resource type="Script" uid="uid://ddsx4je3iohxa" path="res://joy_stick.gd" id="8_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://b0bv2qfvkyeou" path="res://virtual_input.tscn" id="7_wc5p8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc5p8"]
-margin = 0.0
-radius = 0.15
-height = 0.75
+[sub_resource type="BoxShape3D" id="BoxShape3D_4arys"]
+size = Vector3(0.506119, 0.70752, 0.25708)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 billboard_mode = 3
@@ -40,22 +37,6 @@ process_mode = 3
 background_mode = 2
 sky = SubResource("Sky_jsk3o")
 
-[sub_resource type="Curve" id="Curve_wc5p8"]
-_data = [Vector2(0.3, 0.359551), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_jsk3o"]
-width = 64
-curve = SubResource("Curve_wc5p8")
-
-[sub_resource type="Curve" id="Curve_4arys"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_6iypd"]
-width = 32
-curve = SubResource("Curve_4arys")
-
 [node name="RootScene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -68,16 +49,12 @@ script = ExtResource("3_a0tk4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.40981, 16.6773)
 script = ExtResource("1_noarx")
 
-[node name="MainFrame - Reverse Prototype v10" parent="CharacterBody3D" instance=ExtResource("3_i5arm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175311, -0.0123048, 0.230155)
-visible = false
-
 [node name="MainFrame - URDF_FRAME v2" parent="CharacterBody3D" instance=ExtResource("4_wc5p8")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, -0.340059)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.203399, 0.0504808, -0.27322)
-shape = SubResource("CapsuleShape3D_wc5p8")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0019601, 0.126775, 0.011692)
+shape = SubResource("BoxShape3D_4arys")
 
 [node name="WindTrail" type="GPUParticles3D" parent="CharacterBody3D"]
 material_override = SubResource("StandardMaterial3D_a0tk4")
@@ -141,60 +118,4 @@ and You..."
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4arys")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="JoyStick_L" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_jsk3o")
-
-[node name="Base" type="TextureRect" parent="CanvasLayer/JoyStick_L"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 67.0
-offset_top = 482.0
-offset_right = 137.0
-offset_bottom = 551.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CurveTexture_jsk3o")
-
-[node name="Knob" type="TextureRect" parent="CanvasLayer/JoyStick_L"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 518.0
-offset_right = 141.0
-offset_bottom = 558.0
-texture = SubResource("CurveTexture_6iypd")
-
-[node name="JoyStick_R" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_jsk3o")
-
-[node name="Base" type="TextureRect" parent="CanvasLayer/JoyStick_R"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 979.0
-offset_top = 490.0
-offset_right = 1049.0
-offset_bottom = 559.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("CurveTexture_jsk3o")
-
-[node name="Knob" type="TextureRect" parent="CanvasLayer/JoyStick_R"]
-layout_mode = 0
-offset_left = 1013.0
-offset_top = 526.0
-offset_right = 1053.0
-offset_bottom = 566.0
-texture = SubResource("CurveTexture_6iypd")
+[node name="VirtualInput" parent="." instance=ExtResource("7_wc5p8")]

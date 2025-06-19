@@ -26,7 +26,7 @@ func _ready():
     audioPlayer = $AudioStreamPlayer3D
     spotLight = $SpotLight3D
     wind_trail = $WindTrail
-    virtual_joystick_L = get_parent().get_node("CanvasLayer/JoyStick_L")
+    virtual_joystick_L = get_parent().get_node("GUI/VBoxContainer/HBoxContainer/JoyStick_L")
 
 func _physics_process(delta: float) -> void:    
     var direction = get_input_direction()

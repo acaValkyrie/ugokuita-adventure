@@ -12,7 +12,7 @@ var virtual_joystick_R
 func _ready():
     # ルートノードからCharacterBody3Dを探す
     character = get_parent().get_node("CharacterBody3D")
-    virtual_joystick_R = get_parent().get_node("CanvasLayer/JoyStick_R")
+    virtual_joystick_R = get_parent().get_node("GUI/VBoxContainer/HBoxContainer/JoyStick_R")
 
 func _physics_process(_delta):
     if not character: return
