@@ -12,8 +12,7 @@ var virtual_joystick_R
 func _ready():
     # ルートノードからCharacterBody3Dを探す
     character = get_parent().get_node("CharacterBody3D")
-    virtual_joystick_R = get_parent().get_node("GUI/VBoxContainer/HBoxContainer/JoyStick_R")
-
+    
 func _physics_process(_delta):
     if not character: return
 
@@ -24,10 +23,8 @@ func _physics_process(_delta):
     
     var input_gamepad = Vector2(gamepad_x, gamepad_y)
     
-    var input_virtual = virtual_joystick_R.get_input_vector()
-    
     # キーボードの十字キー入力を取得
-    var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") + input_gamepad + input_virtual
+    var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") + input_gamepad
     
     var look_sensitivity_width = 0.1
     var look_sensitivity_height = 0.05

@@ -19,15 +19,12 @@ var isPressed = false
 
 var wind_trail
 
-var virtual_joystick_L
-
 func _ready():
     camera = get_parent().get_node("Camera3D")
     audioPlayer = $AudioStreamPlayer3D
     spotLight = $SpotLight3D
     wind_trail = $WindTrail
-    virtual_joystick_L = get_parent().get_node("GUI/VBoxContainer/HBoxContainer/JoyStick_L")
-
+    
 func _physics_process(delta: float) -> void:    
     var direction = get_input_direction()
     direction = direction.rotated(Vector3.UP, camera.rotation.y)
@@ -94,15 +91,6 @@ func get_key_input_direction() -> Vector3:
 
     return dir.normalized()
 
-func get_virtual_input_direction() -> Vector3:
-    var dir = Vector3.ZERO
-    
-    var virtual_input = virtual_joystick_L.get_input_vector()
-    dir.x += virtual_input.x
-    dir.z += virtual_input.y
-    
-    return dir
-
 func get_gamepad_input_direction() -> Vector3:
     var dir = Vector3.ZERO
 
@@ -116,14 +104,12 @@ func get_gamepad_input_direction() -> Vector3:
 func get_input_direction() -> Vector3:
     # キーボードの入力はサイズ1か0で確定
     var key_dir = get_key_input_direction()
-    
-    var virtual_dir = get_virtual_input_direction()
 
     # ゲームパッドの入力はサイズ1未満の可能性がある
     var gamepad_dir = get_gamepad_input_direction()
 
     # 実際に適用される移動用ベクトルはすべての入力方法の和を使用する
-    var dir = key_dir + virtual_dir + gamepad_dir
+    var dir = key_dir + gamepad_dir
 
     # すべての入力を足した結果サイズが1を超えたら1に正規化する
     if dir.length_squared() > 1:
